@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TINO WELDS & WOODWORK | Professional Welding & Carpentry Services</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins  :wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,6 +24,9 @@
             --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
             --transition: all 0.3s ease;
             --transition-fast: all 0.2s ease;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), #c0392b);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), #e67e22);
         }
 
         body {
@@ -114,7 +117,7 @@
         }
 
         .contact-btn {
-            background: linear-gradient(135deg, var(--accent-color), #e67e22);
+            background: var(--gradient-accent);
             color: white;
             padding: 12px 25px;
             border-radius: 50px;
@@ -174,7 +177,7 @@
             justify-content: center;
             padding: 8rem 2rem 2rem;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1600  ') center/cover;
+                        url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1600') center/cover;
             color: white;
         }
 
@@ -222,6 +225,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            width: 90%;
         }
 
         .info-card {
@@ -338,61 +342,232 @@
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
         }
 
-        /* Services Section */
+        /* Services Section - COMPLETELY UPGRADED */
         .services-section {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
+            padding: 6rem 2rem;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(231, 76, 60, 0.05) 0%, rgba(231, 76, 60, 0) 25%),
+                        radial-gradient(circle at 90% 80%, rgba(52, 152, 219, 0.05) 0%, rgba(52, 152, 219, 0) 25%);
+            z-index: 0;
         }
 
         .section-title {
             text-align: center;
             font-family: 'Poppins', sans-serif;
             font-size: 2.8rem;
-            margin-bottom: 3rem;
-            color: white;
+            margin-bottom: 4rem;
+            color: var(--dark-color);
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
             transition: var(--transition);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
         }
 
-        .service-card i {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+        .service-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
         }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-overlay {
+            transform: translateY(0);
+        }
+
+        .service-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .service-card.carpentry .service-icon { color: var(--primary-color); }
+        .service-card.welding .service-icon { color: var(--secondary-color); }
+        .service-card.electricity .service-icon { color: #f1c40f; }
+        .service-card.upholstery .service-icon { color: #9b59b6; }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: white;
+            color: var(--dark-color);
+            text-align: center;
         }
 
         .service-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.7;
         }
+
+        .service-whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 25px;
+            background: var(--gradient-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-whatsapp-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .service-whatsapp-btn:hover::before {
+            left: 100%;
+        }
+
+        .service-whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
+            background: linear-gradient(135deg, #e67e22, var(--accent-color));
+        }
+
+        .service-whatsapp-btn i {
+            font-size: 1.4rem;
+            min-width: 24px;
+        }
+
+        .service-card.carpentry .service-image {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                        url('https://images.unsplash.com/photo-1581578024184-398bc8b0f9a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+        }
+
+        .service-card.welding .service-image {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1581094794323-8f4f68398b4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+        }
+
+        .service-card.electricity .service-image {
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), 
+                        url('https://images.unsplash.com/photo-1618221195710-66697a91a3be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') center/cover;
+        }
+
+        .service-card.upholstery .service-image {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), 
+                        url('https://images.unsplash.com/photo-1600783294373-765e8c7d1c9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80') center/cover;
+        }
+
+        /* Service Badges */
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .service-card.welding .service-badge { background: var(--gradient-secondary); }
+        .service-card.electricity .service-badge { background: linear-gradient(135deg, #f1c40f, #f39c12); }
+        .service-card.upholstery .service-badge { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
 
         /* About Section */
         .about-section {
@@ -537,11 +712,18 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                width: 100%;
+                left: 0;
+                transform: none;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .service-card:hover {
+                transform: translateY(-10px) scale(1.01);
             }
         }
 
@@ -568,6 +750,18 @@
 
             .business-info p {
                 font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .service-icon {
+                font-size: 2.8rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.6rem;
             }
         }
 
@@ -681,6 +875,47 @@
             margin-top: 2rem;
             justify-content: center;
         }
+
+        /* Service Section Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-card {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Service Stats */
+        .service-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -697,9 +932,9 @@
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#services"><i class="fas fa-hammer"></i> Services</a></li>
                 <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="https://hivetimes.co.za/"><i class="fas fa-globe"></i> HIVETIMES</a></li>
                 <li>
-                    <a href="https://wa.me/27745638562?text=Hello%20Tino  ,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+                    <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
                        class="contact-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Get Free Quote
                     </a>
@@ -731,7 +966,7 @@
                 </div>
                 
                 <div class="whatsapp-buttons">
-                    <a href="https://wa.me/27745638562?text=Hello%20Tino  ,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+                    <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I%20would%20like%20to%20inquire%20about%20your%20services." 
                        class="whatsapp-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp Message
                     </a>
@@ -743,30 +978,135 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - UPGRADED -->
     <section class="services-section" id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
+            <h2 class="section-title">Our Professional Services</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-hammer"></i>
-                    <h3>Carpentry</h3>
-                    <p>Professional carpentry services for restaurants, shops, and salons with custom furniture solutions.</p>
+                <!-- Carpentry Service -->
+                <div class="service-card carpentry">
+                    <div class="service-badge">MOST POPULAR</div>
+                    <div class="service-image">
+                        <div class="service-overlay">
+                            <h4>Custom Restaurant Furniture</h4>
+                            <p>Handcrafted wooden tables, chairs & counters</p>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3>Carpentry</h3>
+                        <p>Professional carpentry services for restaurants, shops, and salons with custom furniture solutions. We create durable, functional, and aesthetically pleasing wooden structures tailored to your business needs.</p>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4.9/5</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I'm%20interested%20in%20your%20Carpentry%20services.%20Please%20send%20me%20more%20information%20and%20pricing." 
+                           class="service-whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Carpentry Quote
+                        </a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-welding"></i>
-                    <h3>Welding</h3>
-                    <p>Expert welding services for structural and decorative metalwork with precision and durability.</p>
+                
+                <!-- Welding Service -->
+                <div class="service-card welding">
+                    <div class="service-image">
+                        <div class="service-overlay">
+                            <h4>Structural Metalwork</h4>
+                            <p>Custom gates, railings & security features</p>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-welding"></i>
+                        </div>
+                        <h3>Welding</h3>
+                        <p>Expert welding services for structural and decorative metalwork with precision and durability. From security gates to custom metal furniture, we deliver strong, reliable solutions for commercial and residential properties.</p>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">350+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4.8/5</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I'm%20interested%20in%20your%20Welding%20services.%20Please%20send%20me%20more%20information%20and%20pricing." 
+                           class="service-whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Welding Quote
+                        </a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Electricity</h3>
-                    <p>Complete electrical installations and repairs for commercial and residential properties.</p>
+                
+                <!-- Electricity Service -->
+                <div class="service-card electricity">
+                    <div class="service-badge">NEW SERVICE</div>
+                    <div class="service-image">
+                        <div class="service-overlay">
+                            <h4>Commercial Electrical</h4>
+                            <p>Complete installations & repairs for businesses</p>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Electricity</h3>
+                        <p>Complete electrical installations and repairs for commercial and residential properties. Our certified electricians ensure safe, efficient, and code-compliant electrical systems for your business or home.</p>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5.0/5</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I'm%20interested%20in%20your%20Electrical%20services.%20Please%20send%20me%20more%20information%20and%20pricing." 
+                           class="service-whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Electrical Quote
+                        </a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-couch"></i>
-                    <h3>Upholstery</h3>
-                    <p>Quality upholstery services for furniture restoration and custom fabric work.</p>
+                
+                <!-- Upholstery Service -->
+                <div class="service-card upholstery">
+                    <div class="service-image">
+                        <div class="service-overlay">
+                            <h4>Furniture Restoration</h4>
+                            <p>Professional reupholstery & custom fabric work</p>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <h3>Upholstery</h3>
+                        <p>Quality upholstery services for furniture restoration and custom fabric work. We transform worn-out furniture into beautiful, comfortable pieces with durable fabrics that match your style and business aesthetic.</p>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">280+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4.7/5</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I'm%20interested%20in%20your%20Upholstery%20services.%20Please%20send%20me%20more%20information%20and%20pricing." 
+                           class="service-whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Upholstery Quote
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -795,7 +1135,7 @@
             <p>WhatsApp & Call: 0745 638562</p>
             
             <div class="social-links">
-                <a href="https://wa.me/27745638562  " target="_blank">
+                <a href="https://wa.me/27745638562" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                 </a>
                 <a href="tel:+27745638562">
@@ -811,7 +1151,7 @@
 
     <!-- Floating WhatsApp Button -->
     <div class="floating-whatsapp">
-        <a href="https://wa.me/27745638562?text=Hello%20Tino  ,%20I%20need%20your%20services!" 
+        <a href="https://wa.me/27745638562?text=Hello%20Tino,%20I%20need%20your%20services!" 
            class="floating-whatsapp-btn" target="_blank">
             <i class="fab fa-whatsapp"></i>
         </a>
@@ -828,7 +1168,7 @@
             <p><strong>Services:</strong> Welding, Carpentry, Electricity, Upholstery</p>
             
             <div class="modal-buttons">
-                <a href="https://wa.me/27745638562  " class="whatsapp-btn" target="_blank">
+                <a href="https://wa.me/27745638562" class="whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="tel:+27745638562" class="whatsapp-btn call-btn">
@@ -860,7 +1200,10 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
                 if (target) {
                     window.scrollTo({
                         top: target.offsetTop - 80,
@@ -902,10 +1245,9 @@
         });
 
         // WhatsApp button click tracking
-        document.querySelectorAll('.whatsapp-btn').forEach(button => {
+        document.querySelectorAll('.whatsapp-btn, .service-whatsapp-btn').forEach(button => {
             button.addEventListener('click', function() {
-                // You can add analytics tracking here if needed
-                console.log('WhatsApp button clicked');
+                console.log('WhatsApp button clicked for:', this.textContent.trim());
             });
         });
 
@@ -923,6 +1265,14 @@
                 floatingBtn.style.transform = 'translateY(0)';
             }
             lastScrollTop = scrollTop;
+        });
+
+        // Initialize service cards animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.style.opacity = '1';
+            });
         });
     </script>
 </body>
